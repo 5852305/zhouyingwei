@@ -67,3 +67,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 Creating a new branch is quick.
+ 
+我在master上面添加了一行
