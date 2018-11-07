@@ -62,4 +62,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
+<<<<<<< HEAD
 The Liaravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+我又添加了一行
+Creating a new branch is quick.
+reating a new branch is quick & simple.
+我在master上面添加了一
+Creating a new branch is quick AND simple.
+我添加第二行
+我添加第三行
+我把问题修复了
+>>>>>>> 8cd49162854cd6456681bdbba44c1579ee8c0ead
