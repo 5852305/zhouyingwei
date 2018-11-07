@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+        <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
@@ -65,6 +65,13 @@
         </style>
     </head>
     <body>
+    <form action="{{ url('/form') }}" method="post">
+        @csrf
+    <div id="app">
+        <editor></editor>
+    </div>
+        <button type="submit">1111</button>
+    </form>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -92,5 +99,6 @@
                 </div>
             </div>
         </div>
+    <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Requests\{{modelName}}Request;
+use App\Http\Requests\Request;
+use App\Services\{{modelName}}Services;
+use App\Models\{{modelName}};
+use Symfony\Component\HttpFoundation\Response;
+use App\Http\Controllers\Controller;
+class {{modelName}}Controller extends Controller
+{
+    protected ${{modelNameSingularLowerCase}};
+    protected ${{modelNameSingularLowerCase}}Services;
+    public function __construct({{modelName}} ${{modelNameSingularLowerCase}},{{modelName}}Services ${{modelNameSingularLowerCase}}Services)
+    {
+        $this->middleware('auth.admin:admin');
+        $this->{{modelNameSingularLowerCase}}= ${{modelNameSingularLowerCase}};
+           $this->{{modelNameSingularLowerCase}}Services= ${{modelNameSingularLowerCase}}Services;
+    }
+    //{{modelTitle}}列表
+    public function index(Request $request)
+    {
+        ${{modelNamePluralLowerCase}} =  $this->{{modelNameSingularLowerCase}}->latest()->paginate(20);
+
+       return view('admin.{{modelNamePluralLowerCase}}.index',compact('{{modelNamePluralLowerCase}}'));
+
+    }
+    //{{modelTitle}}添加
+    public function store({{modelName}}Request $request)
+    {
+        {{modelName}}::create($request->all());
+        return response()->json(['info'=>'添加成功'],Response::HTTP_CREATED);
+    }
+  //{{modelTitle}}添加页面
+    public function create(Request $request)
+    {
+       return view('admin.{{modelNamePluralLowerCase}}.create_and_edit');
+    }
+  //{{modelTitle}}修改页面
+    public function edit({{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        return view('admin.{{modelNamePluralLowerCase}}.create_and_edit',compact('{{modelNameSingularLowerCase}}'));
+    }
+  //{{modelTitle}}修改
+    public function update({{modelName}}Request $request,  {{modelName}} ${{modelNameSingularLowerCase}})
+    {
+        ${{modelNameSingularLowerCase}}->update($request->all());
+         return response()->json(['info'=>'修改成功'],Response::HTTP_CREATED);
+    }
+  //{{modelTitle}}删除
+    public function destroy({{modelName}}Request $request)
+    {
+        {{modelName}}::destroy($request->get('id'));
+        return response()->json(Response::HTTP_NO_CONTENT);
+    }
+}

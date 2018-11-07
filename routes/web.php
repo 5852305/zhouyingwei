@@ -14,7 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::post('/form', function (\Illuminate\Http\Request $request) {
+    dump($request->all());
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+$router->post('upload/uploadImages', 'UploadController@uploadImages');//文件上传
+/*-*/ //不可删除

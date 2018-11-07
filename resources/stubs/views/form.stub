@@ -1,0 +1,21 @@
+<div class="JJList">
+    <ul class="maxUl" id="app">
+        @if(Route::is('admin.{{modelNamePluralLowerCase}}.create'))
+            {!! Form::open(['route'=>'admin.{{modelNamePluralLowerCase}}.store','method'=>'post','id'=>'{{modelNamePluralLowerCase}}','onsubmit'=>'return false']) !!}
+        @else
+            {!! Form::model(${{modelNameSingularLowerCase}},['route'=>['admin.{{modelNamePluralLowerCase}}.update',${{modelNameSingularLowerCase}}->id],'id'=>'{{modelNamePluralLowerCase}}','method'=>'put','onsubmit'=>'return false']) !!}
+        @endif
+            <li>
+                <div class="liLeft">{{modelNameSingularLowerCase}}：</div>
+                <div class="liRight">
+                    {!!  Form::text('name',old('name'),['placeholder'=>'{{modelNameSingularLowerCase}}',"class"=>'checkNull']) !!}
+                </div>
+                <div class="clear"></div>
+            </li>
+
+        <div class="clear"></div>
+        {!! Form::close() !!}
+    </ul>
+</div>
+
+
