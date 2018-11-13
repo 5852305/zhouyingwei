@@ -65,13 +65,7 @@
         </style>
     </head>
     <body>
-    <form action="{{ url('/form') }}" method="post">
-        @csrf
-    <div id="app">
-        <editor></editor>
-    </div>
-        <button type="submit">1111</button>
-    </form>
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

@@ -18,7 +18,8 @@ Route::post('/form', function (\Illuminate\Http\Request $request) {
     dump($request->all());
 });
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware'=>'auth'],function ($router){
+    $router->resource('post', 'PostController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);//软
+});
 $router->post('upload/uploadImages', 'UploadController@uploadImages');//文件上传
 /*-*/ //不可删除
