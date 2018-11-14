@@ -3,9 +3,9 @@
        <mavon-editor v-model="editor_value" :ishljs = "true"  ref=md  @imgAdd="$imgAdd" @imgDel="$imgDel"/>
        <textarea  v-model="editor_value" name="editor_value"></textarea>
 
-       <div
-               class="markdown-body"
-               v-html="compiledMarkdown"/>
+       <!--<div class="markdown-body"-->
+            <!--v-html="compiledMarkdown"/>-->
+      <!--</div>-->
    </div>
 </template>
 
@@ -31,10 +31,11 @@
         }
     });
     export default {
+        props: ['content'],
         "name":'app',
         data(){
             return {
-                editor_value:'aaaa',
+                editor_value:'',
             }
         },
         methods: {
@@ -70,7 +71,8 @@
             }
         },
         mounted() {
-            console.log('Component mounted.')
+            this.editor_value=this.content
+            console.log(this.editor_value)
         }
     }
 </script>

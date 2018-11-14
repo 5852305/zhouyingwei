@@ -11,15 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::post('/form', function (\Illuminate\Http\Request $request) {
-    dump($request->all());
-});
+
+
 Auth::routes();
+Route::get('/', 'PostController@home')->name('home');
+Route::get('/post/{post}.html', 'PostController@show')->name('show');
 Route::group(['middleware'=>'auth'],function ($router){
     $router->resource('post', 'PostController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);//软
 });
-$router->post('upload/uploadImages', 'UploadController@uploadImages');//文件上传
-/*-*/ //不可删除

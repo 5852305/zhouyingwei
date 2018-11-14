@@ -20,11 +20,15 @@
         @forelse($posts as $post)
         <tr>
             <td>{{ $post->id }}</td>
-            <td>{{ $post->title }}</td>
+            <td><a href="{{ route('post.edit',$post->id) }}">{{ $post->title }}</a></td>
             <td>{{ $post->created_at }}</td>
             <td>{{ $post->updated_at }}</td>
             <td>
-                <a href="">删除</a>
+                <form action="{{ route('post.destroy',$post->id) }}" method="post">
+                    <input name="_method" type="hidden" value="DELETE">
+                    @csrf
+               <button type="submit" class="btn btn-danger btn-sm">删除</button>
+                </form>
             </td>
         </tr>
         @empty

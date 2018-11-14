@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    {!! editor_css() !!}
+    <div class="container" >
        @includeIf('posts.form')
     </div>
+    {!! editor_js() !!}
 @endsection

@@ -150,7 +150,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        LaravelChen\Editormd\EditorMdProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         /*
          * Application Service Providers...
          */

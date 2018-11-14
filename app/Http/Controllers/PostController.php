@@ -17,7 +17,11 @@ class PostController extends Controller
         $posts=Post::paginate(20);
         return view('posts.home',compact('posts'));
     }
-
+    public function home()
+    {
+        $posts=Post::paginate(10);
+        return view('welcome',compact('posts'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create_and_edit');
+        $post=collect([]);
+        return view('posts.create_and_edit',compact('post'));
     }
 
     /**
@@ -37,9 +42,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $data['title']=$request->input('title');
-        $data['content']=$request->input('editor_value');
-          Post::create($data);
+          Post::create($request->all());
           session()->flash('message','文章添加成功！');
           return redirect()->route('post.index');
     }
@@ -52,7 +55,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('show',compact('post'));
     }
 
     /**
@@ -63,7 +66,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.create_and_edit',compact('post'));
     }
 
     /**
@@ -75,7 +78,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        session()->flash('message','文章修改成功！');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -86,6 +91,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        session()->flash('message','文章删除成功！');
+        return redirect()->route('post.index');
     }
 }
