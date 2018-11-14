@@ -40,6 +40,15 @@
                      <a href="{{ route('home') }}">文章列表</a>
                  </div>
             </div>
+            <script>
+                var _hmt = _hmt || [];
+                (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?7fbdf67be44171fde1f6ac24745846a2";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
 
     </body>
 </html>
