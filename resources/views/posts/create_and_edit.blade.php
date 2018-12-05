@@ -23,7 +23,7 @@
             autoCloseTags: true,
             matchTags: {bothTags: true},
             image:{
-                uploadPath:'./upload',
+                uploadPath:'{{ url('/upload') }}',
                 type:['jpeg','png','bmp','gif','jpg'],
                 maxSize:4096,
             }

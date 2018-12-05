@@ -17,5 +17,6 @@ Auth::routes();
 Route::get('/', 'PostController@home')->name('home');
 Route::get('/post/{post}.html', 'PostController@show')->name('show');
 Route::group(['middleware'=>'auth'],function ($router){
+    $router->post('upload', 'PostController@upload');//软
     $router->resource('post', 'PostController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);//软
 });

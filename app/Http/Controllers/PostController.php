@@ -59,6 +59,12 @@ class PostController extends Controller
         return view('show',compact('post'));
     }
 
+    public function upload(Request $request)
+    {
+        $arr['path']= env('APP_IMAGE_URL').$request->file('image')->store( date('Y-m-d',time()), 'public');
+        $arr['message']= '图片上传成功';
+       return $arr;
+ }
     /**
      * Show the form for editing the specified resource.
      *
