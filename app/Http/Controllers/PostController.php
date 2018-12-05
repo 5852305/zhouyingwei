@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
-
+use NoisyWinds\Smartmd\Markdown;
 class PostController extends Controller
 {
     /**
@@ -30,6 +30,7 @@ class PostController extends Controller
     public function create()
     {
         $post=collect([]);
+
         return view('posts.create_and_edit',compact('post'));
     }
 
@@ -66,6 +67,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+
         return view('posts.create_and_edit',compact('post'));
     }
 

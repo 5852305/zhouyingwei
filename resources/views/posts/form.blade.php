@@ -6,19 +6,27 @@
         <input name="_method" type="hidden" value="PUT">
       @csrf
     @endif
-    <div class="form-group">
-        <label for="recipient-name" class="col-form-label">标题:</label>
-        <input type="text" name="title" class="form-control" value="{{ old('title',optional($post)->title ?? '' ) }}" required id="recipient-name">
-    </div>
-    <div class="form-group">
-        <label for="message-text" class="col-form-label">内容:</label>
-        <div id="editormd_id">
-            <textarea name="content" style="display:none;">{{ old('title',optional($post)->content ?? '' ) }}</textarea>
+
+
+
+        <div class="form-group">
+            <label for="recipient-name" class="col-form-label">标题:</label>
+            <input type="text" name="title" class="form-control" value="{{ old('title',optional($post)->title ?? '' ) }}" required id="recipient-name">
         </div>
-    </div>
-    <div class="form-group" >
-     <button type="submit" class="btn btn-primary btn-block">添加文章</button>
-    </div>
+        <div class="form-group">
+            <label for="message-text" class="col-form-label">内容:</label>
+            {{--<div id="editormd_id">--}}
+            {{----}}
+            {{--<textarea name="content" style="display:none;">{{ old('title',optional($post)->content ?? '' ) }}</textarea>--}}
+            {{--</div>--}}
+            <div class="editor">
+                <textarea id="editor"  name="content" placeholder="请输入正文" style="display: none">{{ old('title',optional($post)->content ?? '' ) }}</textarea>
+            </div>
+        </div>
+        <div class="form-group" >
+            <button type="submit" class="btn btn-primary btn-block">添加文章</button>
+        </div>
+
 </form>
 
 
